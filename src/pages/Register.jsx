@@ -14,8 +14,9 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
+    const displayName = fullName;
     e.preventDefault();
-    createUser(email, password, navigate);
+    createUser(email, password, displayName, navigate);
 
     //  console.log(fullName)
   };
@@ -38,7 +39,7 @@ const Register = () => {
           <TextField
             required
             id="outlined-required"
-            label=", password"
+            label="Email"
             defaultValue=""
             onChange={(e) => setEmail(e.target.value)}
           />
