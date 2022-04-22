@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import BlogCard from "../components/BlogCard";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div>
+      {/*  {datas.map((data) =>(
+        <BlogCard key={} {...data}/>
+      ))} */}
+      <BlogCard/>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

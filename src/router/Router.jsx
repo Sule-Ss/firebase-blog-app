@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import About from "../pages/About";
 import Dashboard from "../pages/Dashboard";
 import Details from "../pages/Details";
@@ -9,21 +9,35 @@ import Register from "../pages/Register";
 import UpdateBlog from "../pages/UpdateBlog";
 import Login from "../pages/Login";
 import Navbar from "../components/Navbar";
+import PrivateRouter from "./PrivateRouter";
+// import { AuthContext } from "../contexts/AuthContext";
 
 const Router = () => {
+  // const { currentUser } = useContext(AuthContext);
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/details" element={<Details />} />
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/login" element={<Login />} />
-          <Route path="/newblog" element={<NewBlog />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/UpdateBlog" element={<UpdateBlog />} />
+
+          <Route element={<PrivateRouter />}>
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/UpdateBlog/:id" element={<UpdateBlog />} />
+            <Route path="/newblog" element={<NewBlog />} />
+          </Route>
+
+          {/* <Route
+            path="/details/:id"
+            element={
+              currentUser ? <Details /> : <Navigate to="/login" replace />
+            }
+            //replace ile yol direkt değiştiriliyor.
+          />*/}
         </Routes>
       </BrowserRouter>
     </div>

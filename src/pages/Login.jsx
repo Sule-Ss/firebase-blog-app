@@ -57,6 +57,8 @@ const Login = () => {
             WITH <img src={googleLogo} alt="google-logo" />
           </Button>
         </form>
+
+        <p >Are you not registered? <Button onClick={()=> navigate("/register")}>Register</Button></p>
       </div>
     </div>
   );
