@@ -62,15 +62,15 @@ export const logOut = () => {
   alert("logged out successfully");
 };
 
-export const userObserver = () => {
+export const userObserver = (setCurrentUser) => {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-    //  setCurrentUser(currentUser)
+      setCurrentUser(currentUser);
       // const uid = user.uid; // profil fotosu için kullanılabilir?
       // ...
     } else {
       // User is signed out
-      // setCurrentUser
+      setCurrentUser(false);
     }
   });
 };
