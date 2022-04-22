@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useContext}  from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,10 +7,13 @@ import "./style.css";
 import homeIcon from "../assests/home.png";
 import { Link } from "react-router-dom";
 import { logOut } from "../utils/firebaseUtils";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Navbar() {
   // const currentUser = "hello";
-  const currentUser = false;
+  // const currentUser = false;
+
+  const {currentUser} = useContext(AuthContext)
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -37,7 +40,7 @@ export default function Navbar() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <h3>{currentUser}</h3>
+        <h3>{currentUser?.displayName}</h3>
         <AccountCircleIcon className="navbarButton" />
       </Button>
 

@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./styles/register-login.css";
 import googleLogo from "../assests/google.png";
-import { signIn } from "../utils/firebaseUtils";
+import { signIn, signUpProvider } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,6 +19,10 @@ const Login = () => {
     // console.log(email, password);
   };
 
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
+
   return (
     <div className="registerMain">
       <div className="registerContainer">
@@ -31,7 +35,7 @@ const Login = () => {
             id="outlined-required"
             label="Email"
             defaultValue=""
-            onChange={(e)=> setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             required
@@ -39,13 +43,17 @@ const Login = () => {
             label="Password"
             type="password"
             autoComplete="current-password"
-            onChange={(e)=> setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <Button variant="contained" className="registerButton" type="submit">
             Login
           </Button>
-          <Button variant="contained" className="googleButton">
+          <Button
+            variant="contained"
+            className="googleButton"
+            onClick={handleProviderLogin}
+          >
             WITH <img src={googleLogo} alt="google-logo" />
           </Button>
         </form>

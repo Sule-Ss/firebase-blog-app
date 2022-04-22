@@ -3,7 +3,7 @@ import { userObserver } from "../utils/firebaseUtils";
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({children}) => {
-    const [currentUser, setCurrentUser] = useState()
+    const [currentUser, setCurrentUser] = useState();
 
     useEffect(() => {
     //usser signin signout olduğunda takip eden fonk.
@@ -11,7 +11,7 @@ const AuthContextProvider = ({children}) => {
     }, [])
     
   return (
-    <AuthContext.Provider value={currentUser}>
+    <AuthContext.Provider value={{currentUser}}>
       {children}
     </AuthContext.Provider>
   );
