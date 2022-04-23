@@ -29,6 +29,7 @@ const Register = () => {
 
         <form action="" onSubmit={handleSubmit}>
           <TextField
+            name="fullName"
             required
             id="outlined-required"
             label="Full Name"
@@ -37,6 +38,7 @@ const Register = () => {
           />
 
           <TextField
+            name="email"
             required
             id="outlined-required"
             label="Email"
@@ -44,6 +46,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
+            name="password"
             required
             id="outlined-password-input"
             label="Password"

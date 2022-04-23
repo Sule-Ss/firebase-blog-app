@@ -22,7 +22,7 @@
     font-variant: small-caps;
 }
 
-.navbar h1 span{
+.navbar h1 span {
     color: #F5DEB3;
 }
 
@@ -40,13 +40,35 @@
     opacity: 1;
 }
 
-.navbar h3{
+.navbar h3 {
     color: white;
     margin-right: 1rem;
 }
 
-.link{
+.link {
     color: black;
     text-decoration: none;
 }
 
+/* BLOG CARDS */
+
+.cardContainer .cardImage {
+    object-fit: fill;
+    object-position: center;
+}
+
+.cardContainer .favBtn{
+    color: black;
+    transition: 1s;
+    /* background-color: red; */
+    /* background-color: #046582; */
+}
+
+/* .cardContainer .fontawesome{
+    color: red;
+} */
+
+.cardContainer .active{
+    color: red;
+    /* transition: 0.3s; */
+}
