@@ -5,8 +5,9 @@ import "./styles/newblog.css";
 import { useContext } from "react";
 import { BlogContext } from "../contexts/BlogContext";
 
-const NewBlog = ({info, setInfo }) => {
-  // const { info, setInfo } = useContext(BlogContext);
+const NewBlog = () => {
+  const { info } = useContext(BlogContext);
+  const { setInfo } = useContext(BlogContext);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -16,19 +17,24 @@ const NewBlog = ({info, setInfo }) => {
     setInfo({ ...info, [name]: value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submit")
+  };
+
   return (
     <div className="newblogContainer">
       <img src={blogLogo} alt="blog-logo" className="blogLogo" />
       <h1>── New Blog ──</h1>
 
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <TextField
           required
           id="outlined-required"
           label="Title"
           defaultValue=""
           name="title"
-          value={info.title}
+          value={info?.title}
           onChange={handleChange}
         />
 
@@ -38,7 +44,7 @@ const NewBlog = ({info, setInfo }) => {
           label="Image URL"
           defaultValue=""
           name="imgUrl"
-          value={info.imgUrl}
+          value={info?.imgUrl}
           onChange={handleChange}
         />
 
@@ -50,12 +56,12 @@ const NewBlog = ({info, setInfo }) => {
           defaultValue=""
           required
           name="content"
-          value={info.content}
+          value={info?.content}
           onChange={handleChange}
         />
 
-        <Button variant="contained" className="btn">
-          Login
+        <Button variant="contained" className="btn" type="submit">
+          Add
         </Button>
       </form>
     </div>

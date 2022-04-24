@@ -13,7 +13,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BlogCard = () => {
-  const { currentUser } = useContext(AuthContext);
+  const  {info, setInfo, isLoading,setIsLoading,contactList,setContactList}  = useContext(AuthContext);
   let navigate = useNavigate();
 
   const [fav, setFav] = useState(0)

@@ -1,11 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 import { userObserver } from "../utils/firebaseUtils";
+
 export const BlogContext = createContext();
 
-const initialValues={title:"",imgUrl:"",content:"NO INFO"}
+// const initialValues={title:"",imgUrl:"",content:""}
 
 const BlogContextProvider = ({children}) => {
     const [info, setInfo] = useState();
+    /* const [isLoading, setIsLoading] = useState();
+    const [contactList, setContactList] = useState(initialValues); */
 
     useEffect(() => {
      userObserver(setInfo);
