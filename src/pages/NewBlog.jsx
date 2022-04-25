@@ -4,22 +4,32 @@ import Button from "@mui/material/Button";
 import "./styles/newblog.css";
 import { useContext } from "react";
 import { BlogContext } from "../contexts/BlogContext";
+import { AddBlog } from "../utils/firebaseUtils";
+import { useNavigate } from "react-router-dom";
 
 const NewBlog = () => {
-  const { info } = useContext(BlogContext);
-  const { setInfo } = useContext(BlogContext);
+  const { info, setInfo } = useContext(BlogContext);
+  // const {  } = useContext(BlogContext);
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     /* burdaki name => inputa göre değişir. title, url veya content. */
     setInfo({ ...info, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit")
+
+    // (info.id)
+    AddBlog(info);
+    console.log("submit");
+    console.log(AddBlog(info));
+    console.log(info);
+    console.log(info.title);
+    navigate("/dashboard")
   };
 
   return (
@@ -45,6 +55,7 @@ const NewBlog = () => {
           defaultValue=""
           name="imgUrl"
           value={info?.imgUrl}
+          type="url"
           onChange={handleChange}
         />
 

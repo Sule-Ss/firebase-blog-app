@@ -4,12 +4,23 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendPasswordResetEmail,
+  // sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+
+import { useState, useEffect } from "react";
+import {
+  getDatabase,
+  ref,
+  set,
+  push,
+  onValue,
+  remove,
+  update,
+} from "firebase/database";
 
 const firebaseApp = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -75,7 +86,7 @@ export const userObserver = (setCurrentUser) => {
   });
 };
 
-export const signUpProvider = (navigate) =>{
+export const signUpProvider = (navigate) => {
   const provider = new GoogleAuthProvider();
 
   signInWithPopup(auth, provider)
@@ -86,4 +97,62 @@ export const signUpProvider = (navigate) =>{
     .catch((error) => {
       console.log(error);
     });
-}
+};
+
+/* --- firebase data ------ */
+
+// Bilgi ekleme
+export const AddBlog = (info) => {
+  const db = getDatabase();
+  const blogRef = ref(db, "blogs");
+  const newBlogRef = push(blogRef);
+
+  set(newBlogRef, {
+    title: info.title,
+    imgUrl: info.imgUrl,
+    content: info.content,
+  });
+};
+
+//Bilgi çağırma
+export const useFetch = () => {
+  const [isLoading, setIsLoading] = useState();
+  const [blogList, setBlogList] = useState();
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const db = getDatabase();
+    const blogRef = ref(db, "blogs");
+
+    onValue(blogRef, (snapshot) => {
+      const data = snapshot.val();
+      const blogsArray = [];
+
+      for (let id in data) {
+        blogsArray.push({ id, ...data[id] });
+      }
+      setBlogList(blogsArray);
+      setIsLoading(false);
+    });
+  }, []);
+  return { isLoading, blogList };
+};
+
+//Bilgi silme
+export const DeleteBlog = (id) => {
+  const db = getDatabase();
+  // const blogRef = ref(db, "blogs");
+  remove(ref(db, "baglanti/" + id));
+
+  // Toastify("Kullanıcı bilgisi silindi");
+};
+
+//Bilgi Değiştirme
+export const EditUser = (info) => {
+  const db = getDatabase();
+  const updates = {};
+
+  updates["blogs/" + info.id] = info;
+  return update(ref(db), updates);
+};

@@ -3,19 +3,17 @@ import { userObserver } from "../utils/firebaseUtils";
 
 export const BlogContext = createContext();
 
-// const initialValues={title:"",imgUrl:"",content:""}
+const initialValues = { title: "", imgUrl: "", content: "" };
 
-const BlogContextProvider = ({children}) => {
-    const [info, setInfo] = useState();
-    /* const [isLoading, setIsLoading] = useState();
-    const [contactList, setContactList] = useState(initialValues); */
+const BlogContextProvider = ({ children }) => {
+  const [info, setInfo] = useState(initialValues);
 
-    useEffect(() => {
-     userObserver(setInfo);
-    }, [])
-    
+  useEffect(() => {
+    userObserver(setInfo);
+  }, []);
+
   return (
-    <BlogContext.Provider value={{info, setInfo}}>
+    <BlogContext.Provider value={{ info, setInfo }}>
       {children}
     </BlogContext.Provider>
   );

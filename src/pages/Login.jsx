@@ -6,6 +6,8 @@ import "./styles/register-login.css";
 import googleLogo from "../assests/google.png";
 import { signIn, signUpProvider } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
+import { fontStyle } from "@mui/system";
+import passwordImg from "../assests/forgot-password.png"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -58,7 +60,15 @@ const Login = () => {
           </Button>
         </form>
 
-        <p >Are you not registered? <Button onClick={()=> navigate("/register")}>Register</Button></p>
+        <div style={{ fontFamily: "sans-serif", fontSize: "12px" }}>
+          <p >
+            Are you not registered?{" "}
+            <Button onClick={() => navigate("/register")}>Register</Button>
+          </p>
+          <p>
+            Do you forgot the password? <Button><img src={passwordImg} alt="" /></Button>
+          </p>
+        </div>
       </div>
     </div>
   );
