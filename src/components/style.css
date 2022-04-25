@@ -60,15 +60,8 @@
 .cardContainer .favBtn{
     color: black;
     transition: 1s;
-    /* background-color: red; */
-    /* background-color: #046582; */
 }
-
-/* .cardContainer .fontawesome{
-    color: red;
-} */
 
 .cardContainer .active{
     color: red;
-    /* transition: 0.3s; */
 }

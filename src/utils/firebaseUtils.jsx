@@ -99,7 +99,7 @@ export const signUpProvider = (navigate) => {
     });
 };
 
-/* --- firebase data ------ */
+//! --- firebase data ------ 
 
 // Bilgi ekleme
 export const AddBlog = (info) => {
@@ -134,6 +134,7 @@ export const useFetch = () => {
       }
       setBlogList(blogsArray);
       setIsLoading(false);
+      console.log("boglist : ", blogList)
     });
   }, []);
   return { isLoading, blogList };

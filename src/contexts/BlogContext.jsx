@@ -3,7 +3,7 @@ import { userObserver } from "../utils/firebaseUtils";
 
 export const BlogContext = createContext();
 
-const initialValues = { title: "", imgUrl: "", content: "" };
+const initialValues = { title: "title", imgUrl: "img url", content: "content" };
 
 const BlogContextProvider = ({ children }) => {
   const [info, setInfo] = useState(initialValues);

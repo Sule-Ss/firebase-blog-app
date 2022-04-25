@@ -6,11 +6,23 @@ import { useContext } from "react";
 import { BlogContext } from "../contexts/BlogContext";
 import { AddBlog } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
+import { getDatabase, push, ref, set } from "firebase/database";
 
 const NewBlog = () => {
   const { info, setInfo } = useContext(BlogContext);
-  // const {  } = useContext(BlogContext);
   let navigate = useNavigate();
+
+  const AddBlog = (info) => {
+    const db = getDatabase();
+    const blogRef = ref(db, "blogs");
+    const newBlogRef = push(blogRef);
+
+    set(newBlogRef, {
+      title: info.title,
+      imgUrl: info.imgUrl,
+      content: info.content,
+    });
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -29,7 +41,7 @@ const NewBlog = () => {
     console.log(AddBlog(info));
     console.log(info);
     console.log(info.title);
-    navigate("/dashboard")
+    navigate("/");
   };
 
   return (
