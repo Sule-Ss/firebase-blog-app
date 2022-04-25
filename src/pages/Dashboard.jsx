@@ -7,7 +7,8 @@ const Dashboard = () => {
       {/*  {datas.map((data) =>(
         <BlogCard key={} {...data}/>
       ))} */}
-      <BlogCard/>
+      <p>DashBoard</p>
+      <BlogCard />
     </div>
   );
 };

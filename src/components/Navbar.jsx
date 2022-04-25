@@ -61,7 +61,7 @@ export default function Navbar() {
             <Link to={"/newblog"} className="link">
               <MenuItem onClick={handleClose}>New</MenuItem>
             </Link>
-            <Link to={"/login"} className="link">
+            <Link to={"/"} className="link">
               <MenuItem onClick={handleClose && (() => logOut())}>
                 Logout
               </MenuItem>
