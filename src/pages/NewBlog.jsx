@@ -2,14 +2,17 @@ import blogLogo from "../assests/blog.png";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./styles/newblog.css";
-import { useContext } from "react";
-import { BlogContext } from "../contexts/BlogContext";
+import { useBlogContext } from "../contexts/BlogContext";
 import { AddBlog } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const NewBlog = () => {
-  const { info, setInfo } = useContext(BlogContext);
+  const { info, setInfo } = useBlogContext();
   let navigate = useNavigate();
+  const {currentUser} = useAuthContext();
+
+  console.log(currentUser)
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -23,11 +26,8 @@ const NewBlog = () => {
     e.preventDefault();
 
     // (info.id)
-    AddBlog(info);
-    console.log("submit");
-    console.log(AddBlog(info));
-    console.log(info);
-    console.log(info.title);
+    AddBlog(info, currentUser);
+   
     navigate("/");
   };
 

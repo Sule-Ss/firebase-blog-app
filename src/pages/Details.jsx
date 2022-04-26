@@ -1,31 +1,59 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
-import { BlogContext } from '../contexts/BlogContext';
-import { useFetch } from '../utils/firebaseUtils';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
+import { useLocation } from "react-router-dom";
+import { useBlogContext } from "../contexts/BlogContext";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import "./styles/datails.css";
 
 const Details = () => {
-  //router da url e eklenen id yi almak için :
-  const {id} = useParams();
-  const [blogDetail, setBlogDetail] = useState();
-  const { currentUser } = useContext(BlogContext);
-  const { isLoading, blogList } = useFetch();
+  const { currentUser } = useBlogContext();
   const location = useLocation();
 
-  useEffect(() => {
-    setBlogDetail(blogList)
-    console.log(location)
-    console.log(blogDetail);
-  }, [])
+  const data = location.state.item;
 
-  const data = location.key
-  
+  console.log(data);
+
   return (
-    <div>
-      {/* <h1>{item?.id}</h1> */}
-      details 
-      {/* {data} */}
+    <div className="detailsContainer">
+      <Card sx={{ maxWidth: 800, margin: "3rem" }} className="cardContainer">
+        <CardMedia
+          className="cardImage"
+          component="img"
+          height="250"
+          image={data?.imgUrl}
+          alt="blog image"
+        />
+        <CardContent className="cardContent">
+          <Typography gutterBottom variant="h5" component="div" textAlign="center">
+            {data?.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {data?.content}
+          </Typography>
+          <Typography color="darkblue" marginTop="1rem">
+            {data.user}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ borderRadius: "50%" }}>
+          <FavoriteIcon
+            className={data.likes > 0 ? "active" : "favBtn"}
+            sx={{ cursor: "pointer", marginRight: "5px" }}
+          />
+          <span> {data.likes}</span>
+        </CardActions>
+        {/* <Button
+                  onClick={currentUser ? navigate("/details") : "user not found"}
+                >
+                  Details
+                </Button> */}
+      </Card>
     </div>
-  )
-}
+  );
+};
 
-export default Details
+export default Details;

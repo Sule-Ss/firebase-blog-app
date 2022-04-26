@@ -1,21 +1,20 @@
-import { createContext, useEffect, useState } from "react";
-import { userObserver } from "../utils/firebaseUtils";
+import { createContext, useContext, useState } from "react";
 
 export const BlogContext = createContext();
 
-const initialValues = { title: "title", imgUrl: "img url", content: "content" };
+const initialValues = { title: "", imgUrl: "", content: "" };
 
 const BlogContextProvider = ({ children }) => {
   const [info, setInfo] = useState(initialValues);
-
-  useEffect(() => {
-    userObserver(setInfo);
-  }, []);
 
   return (
     <BlogContext.Provider value={{ info, setInfo }}>
       {children}
     </BlogContext.Provider>
   );
+};
+
+export const useBlogContext = () => {
+  return useContext(BlogContext);
 };
 export default BlogContextProvider;

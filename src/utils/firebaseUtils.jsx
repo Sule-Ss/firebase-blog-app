@@ -102,7 +102,7 @@ export const signUpProvider = (navigate) => {
 //! --- firebase data ------ 
 
 // Bilgi ekleme
-export const AddBlog = (info) => {
+export const AddBlog = (info, currentUser) => {
   const db = getDatabase();
   const blogRef = ref(db, "blogs");
   const newBlogRef = push(blogRef);
@@ -111,6 +111,8 @@ export const AddBlog = (info) => {
     title: info.title,
     imgUrl: info.imgUrl,
     content: info.content,
+    likes: 0,
+    user: currentUser.email
   });
 };
 

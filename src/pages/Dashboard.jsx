@@ -1,10 +1,11 @@
 import React from "react";
 import BlogCard from "../components/BlogCard";
+import "./styles/dasboard.css";
 
 const Dashboard = () => {
   return (
     <div>
-      <p>DashBoard</p>
+      <h1 className="dasboardH1">~~DashBoard~~</h1>
       <BlogCard />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, {useContext}  from "react";
+import {useState}  from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,15 +7,13 @@ import "./style.css";
 import homeIcon from "../assests/home.png";
 import { Link } from "react-router-dom";
 import { logOut } from "../utils/firebaseUtils";
-import { AuthContext } from "../contexts/AuthContext";
+import {useAuthContext } from "../contexts/AuthContext";
 
 export default function Navbar() {
-  // const currentUser = "hello";
-  // const currentUser = false;
 
-  const {currentUser} = useContext(AuthContext)
+  const {currentUser} = useAuthContext();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
