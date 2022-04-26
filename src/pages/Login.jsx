@@ -38,6 +38,7 @@ const Login = () => {
             label="Email"
             defaultValue=""
             onChange={(e) => setEmail(e.target.value)}
+            type="email"
           />
           <TextField
             required
