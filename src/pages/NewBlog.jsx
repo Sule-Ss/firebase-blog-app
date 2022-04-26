@@ -6,23 +6,10 @@ import { useContext } from "react";
 import { BlogContext } from "../contexts/BlogContext";
 import { AddBlog } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
-import { getDatabase, push, ref, set } from "firebase/database";
 
 const NewBlog = () => {
   const { info, setInfo } = useContext(BlogContext);
   let navigate = useNavigate();
-
-  const AddBlog = (info) => {
-    const db = getDatabase();
-    const blogRef = ref(db, "blogs");
-    const newBlogRef = push(blogRef);
-
-    set(newBlogRef, {
-      title: info.title,
-      imgUrl: info.imgUrl,
-      content: info.content,
-    });
-  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -49,7 +36,7 @@ const NewBlog = () => {
       <img src={blogLogo} alt="blog-logo" className="blogLogo" />
       <h1>── New Blog ──</h1>
 
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit} >
         <TextField
           required
           id="outlined-required"

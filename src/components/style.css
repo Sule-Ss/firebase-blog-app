@@ -2,7 +2,8 @@
 
 .navbar {
     font-family: 'Girassol', cursive;
-    background-color: #046582;
+    /* background-color: #046582; */
+    background-color: #180A0A;
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
@@ -50,7 +51,13 @@
     text-decoration: none;
 }
 
-/* BLOG CARDS */
+/*----- BLOG CARDS --------- */
+
+.blogCardForm .cardContainer{
+    background-color: #f4fdfc;
+    box-shadow: 5px 10px 8px #888888;
+    margin-bottom: 2rem;
+}
 
 .cardContainer .cardImage {
     object-fit: fill;
@@ -60,8 +67,17 @@
 .cardContainer .favBtn{
     color: black;
     transition: 1s;
+    border-radius: 50%;
 }
 
 .cardContainer .active{
     color: red;
 }
+
+.blogCardForm{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* align-items: center; */
+}
+

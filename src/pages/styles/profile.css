@@ -1,0 +1,29 @@
+.profilContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilContainer>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #121212;
+    padding: 2rem;
+    margin-top: 5rem;
+    border-radius: 1rem;
+}
+
+.profilContainer .profileIcon {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    /* border: 1px solid red; */
+}
+
+.profilContainer>* {
+    margin: 1rem;
+}
