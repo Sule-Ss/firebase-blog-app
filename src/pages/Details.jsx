@@ -6,12 +6,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { useBlogContext } from "../contexts/BlogContext";
+// import { useBlogContext } from "../contexts/BlogContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import "./styles/datails.css";
 
 const Details = () => {
-  const { currentUser } = useBlogContext();
+  // const { currentUser } = useBlogContext();
   const location = useLocation();
 
   const data = location.state.item;
@@ -29,7 +30,12 @@ const Details = () => {
           alt="blog image"
         />
         <CardContent className="cardContent">
-          <Typography gutterBottom variant="h5" component="div" textAlign="center">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            textAlign="center"
+          >
             {data?.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -44,6 +50,9 @@ const Details = () => {
             className={data.likes > 0 ? "active" : "favBtn"}
             sx={{ cursor: "pointer", marginRight: "5px" }}
           />
+          <span> {data.likes}</span>
+
+          <ModeCommentOutlinedIcon sx={{ cursor: "pointer" }} />
           <span> {data.likes}</span>
         </CardActions>
         {/* <Button

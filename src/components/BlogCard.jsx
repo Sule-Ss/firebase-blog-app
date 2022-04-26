@@ -1,5 +1,5 @@
 import {
-  Button,
+  // Button,
   Card,
   CardActions,
   CardContent,
@@ -8,12 +8,13 @@ import {
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../contexts/AuthContext";
+// import { useAuthContext } from "../contexts/AuthContext";
 import { EditUser, useFetch } from "../utils/firebaseUtils";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import spinner from "../assests/spinner.gif"
 
 const BlogCard = () => {
-  const { currentUser } = useAuthContext();
+  // const { currentUser } = useAuthContext();
   const { blogList } = useFetch();
   let navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const BlogCard = () => {
 
   return (
     <div className="blogCardForm">
-      {blogList?.lenght !== 0
+      {blogList
         ? blogList?.map((item, index) => (
             <Card sx={{ maxWidth: 345 }} className="cardContainer" key={index}>
               <CardMedia
@@ -82,9 +83,11 @@ const BlogCard = () => {
                 >
                   Details
                 </Button> */}
+
             </Card>
           ))
-        : "blogList empty"}
+        : <div className="spinner"><img src={spinner} alt="" /></div>}
+        
     </div>
   );
 };

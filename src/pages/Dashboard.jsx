@@ -1,6 +1,7 @@
 import React from "react";
 import BlogCard from "../components/BlogCard";
 import "./styles/dasboard.css";
+import spinner from "../assests/spinner.gif"
 
 const Dashboard = () => {
   return (

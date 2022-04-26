@@ -81,3 +81,6 @@
     /* align-items: center; */
 }
 
+.spinner{
+    background-image: url("../assests/spinner.gif");
+}

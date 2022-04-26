@@ -9,6 +9,7 @@ import UpdateBlog from "../pages/UpdateBlog";
 import Login from "../pages/Login";
 import Navbar from "../components/Navbar";
 import PrivateRouter from "./PrivateRouter";
+import PrivateRouter2 from "./PrivateRouter2";
 
 const Router = () => {
   return (
@@ -17,11 +18,14 @@ const Router = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
+
+          <Route element={<PrivateRouter2 />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
 
           <Route element={<PrivateRouter />}>
+            <Route path="/profile" element={<Profile />} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/UpdateBlog/:id" element={<UpdateBlog />} />
             <Route path="/newblog" element={<NewBlog />} />

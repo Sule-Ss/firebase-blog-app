@@ -112,7 +112,8 @@ export const AddBlog = (info, currentUser) => {
     imgUrl: info.imgUrl,
     content: info.content,
     likes: 0,
-    user: currentUser.email
+    user: currentUser.email,
+    // lilekuserId : 
   });
 };
 
