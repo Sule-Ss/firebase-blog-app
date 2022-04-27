@@ -111,6 +111,7 @@ export const AddBlog = (info, currentUser) => {
     title: info.title,
     imgUrl: info.imgUrl,
     content: info.content,
+    date: info.date,
     likes: 0,
     user: currentUser.email,
     // lilekuserId : 

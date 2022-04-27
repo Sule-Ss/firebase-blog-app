@@ -21,7 +21,7 @@ const Details = () => {
 
   return (
     <div className="detailsContainer">
-      <Card sx={{ maxWidth: 800, margin: "3rem" }} className="cardContainer">
+      <Card sx={{ width: 700, margin: "3rem" }} className="cardContainer">
         <CardMedia
           className="cardImage"
           component="img"
@@ -38,6 +38,11 @@ const Details = () => {
           >
             {data?.title}
           </Typography>
+
+          <Typography value={data.date}>
+            {data.date}
+          </Typography>
+
           <Typography variant="body2" color="text.secondary">
             {data?.content}
           </Typography>

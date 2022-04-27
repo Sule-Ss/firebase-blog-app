@@ -9,11 +9,15 @@ const Profile = () => {
   useEffect(() => {
     console.log(currentUser?.email);
     console.log(currentUser?.displayName);
+    console.log(currentUser.photoURL)
   }, []);
 
   return (
     <div className="profilContainer">
       <div>
+        {/* {
+          currentUser?.photoURL ? <img src={currentUser?.photoURL} alt="" /> : <AccountCircleRoundedIcon className="profileIcon" />
+        } */}
         {/* <img src={currentUser?.photoURL} alt="" /> */}
         <AccountCircleRoundedIcon className="profileIcon" />
         <p>{currentUser?.displayName}</p>

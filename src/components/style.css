@@ -154,6 +154,15 @@
     /* align-items: center; */
 }
 
-.spinner{
-    background-image: url("../assests/spinner.gif");
+.cardBottom{
+display: flex;
+
 }
+
+.cardBottom .email{
+    font-size: 14px;
+    /* mail i sağ alt köşeye yapıştırmak için */
+    margin-top: auto;
+    margin-left: auto;
+}
+
