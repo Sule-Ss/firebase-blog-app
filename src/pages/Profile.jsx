@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import "./styles/profile.css";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
@@ -6,19 +5,9 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 const Profile = () => {
   const { currentUser } = useAuthContext();
 
-  useEffect(() => {
-    console.log(currentUser?.email);
-    console.log(currentUser?.displayName);
-    console.log(currentUser.photoURL)
-  }, []);
-
   return (
     <div className="profilContainer">
       <div>
-       {/*  {
-          currentUser?.photoURL ? <img src={currentUser?.providerData[0].photoURL} alt="" /> : <AccountCircleRoundedIcon className="profileIcon" />
-        } */}
-        {/* <img src={currentUser?.providerData[0].photoURL} alt="" /> */}
         <AccountCircleRoundedIcon className="profileIcon" />
         <p>User Name : {currentUser?.displayName}</p>
         <p>User Email: {currentUser?.email}</p>

@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
-// import { useBlogContext } from "../contexts/BlogContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import "./styles/datails.css";
@@ -21,19 +20,18 @@ const Details = () => {
 
   const data = location.state.item;
 
-  const {currentUser} = useAuthContext();
-  const { setInfo} = useBlogContext();
+  const { currentUser } = useAuthContext();
+  const { setInfo } = useBlogContext();
 
-  
-  const editHandler=({id,username,phoneNumber,gender})=>{
-    setInfo({id,username,phoneNumber,gender})
-    navigate(`/updateBlog/${id}`)
-  }
+  const editHandler = ({ id, username, phoneNumber, gender }) => {
+    setInfo({ id, username, phoneNumber, gender });
+    navigate(`/updateBlog/${id}`);
+  };
 
-  const editHandleChange = ()=>{
+  /*  const editHandleChange = ()=>{
 
-  }
- /*  console.log(data.user);
+  } */
+  /*  console.log(data.user);
   console.log(currentUser.email); */
 
   return (
@@ -56,9 +54,7 @@ const Details = () => {
             {data?.title}
           </Typography>
 
-          <Typography value={data.date}>
-            {data.date}
-          </Typography>
+          <Typography value={data.date}>{data.date}</Typography>
 
           <Typography variant="body2" color="text.secondary">
             {data?.content}
@@ -77,22 +73,19 @@ const Details = () => {
           <ModeCommentOutlinedIcon sx={{ cursor: "pointer" }} />
           <span> {data.likes}</span>
         </CardActions>
-        {/* <Button
-                  onClick={currentUser ? navigate("/details") : "user not found"}
-                >
-                  Details
-                </Button> */}
-                {
-                  currentUser.email === data?.user ?  (<div className="buttons">
-                  <Button>DELETE</Button>
-                  <Button onClick={()=>editHandler(
-                    data.title,
-                    data.imgUrl,
-                    data.content
-                  )}>UPDATE</Button>
-                </div>) : ""
-                }
-       
+
+        {currentUser.email === data?.user ? (
+          <div className="buttons">
+            <Button>DELETE</Button>
+            <Button
+              onClick={() => editHandler(data.title, data.imgUrl, data.content)}
+            >
+              UPDATE
+            </Button>
+          </div>
+        ) : (
+          <p className="blogWarning">Only the author of this blog can make changes...</p>
+        )}
       </Card>
     </div>
   );

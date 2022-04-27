@@ -9,19 +9,17 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 // import { useAuthContext } from "../contexts/AuthContext";
-import { EditUser, useFetch } from "../utils/firebaseUtils";
+import { useFetch } from "../utils/firebaseUtils";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import spinner from "../assests/spinner.gif";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { BlogContext, useBlogContext } from "../contexts/BlogContext";
 
 const BlogCard = () => {
-  
   const { blogList } = useFetch();
   let navigate = useNavigate();
   const { currentUser, handleFavIcon } = useContext(AuthContext);
-  console.log(currentUser)
+  // console.log(currentUser)
 
   return (
     <div className="blogCardForm">
@@ -58,7 +56,7 @@ const BlogCard = () => {
               <Typography
                 variant="body2"
                 color="text.secondary"
-                sx={{ cursor: "pointer", "&:hover": { color: "black" }}}
+                sx={{ cursor: "pointer", "&:hover": { color: "black" } }}
                 onClick={() =>
                   navigate(`/details/${item.id}`, { state: { item } })
                 }
@@ -83,9 +81,7 @@ const BlogCard = () => {
               <ModeCommentOutlinedIcon sx={{ cursor: "pointer" }} />
               <span> {item.likes}</span>
 
-              <Typography className="email">
-                {item.user}
-              </Typography>
+              <Typography className="email">{item.user}</Typography>
             </CardActions>
             {/* <Button
                   onClick={currentUser ? navigate("/details") : "user not found"}

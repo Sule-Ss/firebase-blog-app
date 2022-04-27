@@ -1,13 +1,12 @@
-import { useContext } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { AuthContext, useAuthContext } from "../contexts/AuthContext";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../contexts/AuthContext";
 
 function PrivateRouter() {
-  // const { currentUser } = useContext(AuthContext);
-  const {currentUser} = useAuthContext();
+  const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
   let location = useLocation();
   if (!currentUser) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return navigate(`/login`, { state: { from: location.pathname } });
   } else if (currentUser) {
     return <Outlet />;
   }

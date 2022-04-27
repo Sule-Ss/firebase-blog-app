@@ -2,8 +2,6 @@
 
 .navbar {
     font-family: 'Girassol', cursive;
-    /* background-color: #046582; */
-    /* background-color: #952E05; */
     background-color: #a10404;
     color: whitesmoke;
     display: flex;
@@ -14,7 +12,6 @@
     position: sticky;
     top: 0px;
     z-index: 1;
-    /* letter-spacing: 0.1rem; */
 }
 
 .navbarButton {
@@ -131,8 +128,7 @@
 .cardContainer .cardImage {
     object-fit: fill;
     object-position: center;
-    /* filter: drop-shadow(8px 8px 10px gray); */
-    /* filter: grayscale(50%); */
+    /* cardlardaki img lere verilen efect :   */
     filter:invert(100%) drop-shadow(8px 8px 10px gray);
 }
 

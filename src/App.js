@@ -1,6 +1,6 @@
 import "./App.css";
 import AuthContextProvider from "./contexts/AuthContext";
-import BlogContextProvider, { BlogContext } from "./contexts/BlogContext";
+import BlogContextProvider from "./contexts/BlogContext";
 import Router from "./router/Router";
 
 function App() {

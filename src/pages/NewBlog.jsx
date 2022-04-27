@@ -6,7 +6,6 @@ import { useBlogContext } from "../contexts/BlogContext";
 import { AddBlog } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
-import { Typography } from "@mui/material";
 
 const NewBlog = () => {
   const { info, setInfo } = useBlogContext();
@@ -22,7 +21,6 @@ const NewBlog = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    // console.log(name, value);
     /* burdaki name => inputa göre değişir. title, url veya content. */
     setInfo({ ...info, [name]: value, date:date+time });
   };

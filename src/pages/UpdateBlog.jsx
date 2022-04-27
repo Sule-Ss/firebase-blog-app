@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./styles/newblog.css";
 import { useBlogContext } from "../contexts/BlogContext";
-import { AddBlog, EditUser } from "../utils/firebaseUtils";
+import { EditUser } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 
@@ -69,7 +69,12 @@ const UpdateBlog = () => {
           value={info?.content}
           onChange={handleChange}
         />
-        <Button variant="contained" className="btn" onClick={handleSubmit} type="submit">
+        <Button
+          variant="contained"
+          className="btn"
+          onClick={handleSubmit}
+          type="submit"
+        >
           EDIT
         </Button>
       </form>

@@ -2,11 +2,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { EditUser, userObserver } from "../utils/firebaseUtils";
 export const AuthContext = createContext();
 
+
 const AuthContextProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState();
 
     const handleFavIcon = (e, data) => {
       e.stopPropagation();
+      // console.log(data)
       if (!currentUser) {
         // toastWarnNotify("please login to like")
       } else {

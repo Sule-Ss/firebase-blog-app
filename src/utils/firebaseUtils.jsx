@@ -35,20 +35,15 @@ const app = initializeApp(firebaseApp);
 
 const auth = getAuth(app);
 
-//register sayfasından email ve password gelecek
+//register sayfasından email ve password u çekmek için :
 export const createUser = async (email, password, displayName, navigate) => {
   try {
-    let userCredantial = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, {
       displayName: displayName,
-      photoURL: "https://example.com/jane-q-user/profile.jpg",
+      photoURL: "",
     });
     navigate("/");
-    console.log(userCredantial);
   } catch (err) {
     alert(err.message);
   }
@@ -56,13 +51,8 @@ export const createUser = async (email, password, displayName, navigate) => {
 
 export const signIn = async (email, password, navigate) => {
   try {
-    let userCredantial = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    await signInWithEmailAndPassword(auth, email, password);
     navigate("/");
-    console.log(userCredantial);
   } catch (err) {
     alert(err.message);
   }
@@ -71,14 +61,13 @@ export const signIn = async (email, password, navigate) => {
 export const logOut = () => {
   signOut(auth);
   alert("logged out successfully");
+  //toast ekle
 };
 
 export const userObserver = (setCurrentUser) => {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
       setCurrentUser(currentUser);
-      // const uid = user.uid; // profil fotosu için kullanılabilir?
-      // ...
     } else {
       // User is signed out
       setCurrentUser(false);
@@ -99,8 +88,8 @@ export const signUpProvider = (navigate) => {
     });
 };
 
-export const forgotPassword = (email) =>{
-  //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
+export const forgotPassword = (email) => {
+  // Email yoluyla şifre sıfırlama için kullanılan firebase metodu
   sendPasswordResetEmail(auth, email)
     .then(() => {
       // Password reset email sent!
@@ -110,11 +99,11 @@ export const forgotPassword = (email) =>{
     .catch((err) => {
       // toastErrorNotify(err.message);
       // alert(err.message);
-      // ..
-    });
-}
 
-//! --- firebase data ------ 
+    });
+};
+
+//! --- firebase realtime data ------
 
 // Bilgi ekleme
 export const AddBlog = (info, currentUser) => {
@@ -152,7 +141,6 @@ export const useFetch = () => {
       }
       setBlogList(blogsArray);
       setIsLoading(false);
-      console.log("boglist : ", blogList)
     });
   }, []);
   return { isLoading, blogList };
@@ -164,7 +152,7 @@ export const DeleteBlog = (id) => {
   // const blogRef = ref(db, "blogs");
   remove(ref(db, "baglanti/" + id));
 
-  // Toastify("Kullanıcı bilgisi silindi");
+  // Toastify("");
 };
 
 //Bilgi Değiştirme
