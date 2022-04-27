@@ -19,7 +19,7 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
 
-          <Route element={<PrivateRouter2 />}></Route>
+          {/* <Route element={<PrivateRouter2 />}></Route> */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
 
@@ -29,14 +29,6 @@ const Router = () => {
             <Route path="/updateBlog/:id" element={<UpdateBlog />} />
             <Route path="/newblog" element={<NewBlog />} />
           </Route>
-
-          {/* <Route
-            path="/details/:id"
-            element={
-              currentUser ? <Details /> : <Navigate to="/login" replace />
-            }
-            //replace ile yol direkt değiştiriliyor.
-          />*/}
         </Routes>
       </BrowserRouter>
     </div>

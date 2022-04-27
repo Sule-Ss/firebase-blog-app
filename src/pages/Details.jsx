@@ -15,7 +15,6 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { useBlogContext } from "../contexts/BlogContext";
 
 const Details = () => {
-  // const { currentUser } = useBlogContext();
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -23,12 +22,16 @@ const Details = () => {
   const data = location.state.item;
 
   const {currentUser} = useAuthContext();
-  const {setInfo} = useBlogContext();
+  const { setInfo} = useBlogContext();
 
   
   const editHandler=({id,username,phoneNumber,gender})=>{
     setInfo({id,username,phoneNumber,gender})
     navigate(`/updateBlog/${id}`)
+  }
+
+  const editHandleChange = ()=>{
+
   }
  /*  console.log(data.user);
   console.log(currentUser.email); */

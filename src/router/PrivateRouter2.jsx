@@ -6,7 +6,7 @@ function PrivateRouter2() {
     const {currentUser} = useContext(AuthContext);
     let location = useLocation();
     if (!currentUser) {
-      return <Navigate to="/" state={{ from: location }} replace />;
+      return <Navigate to="/" replace />;
     }
     return <Outlet />;
   }

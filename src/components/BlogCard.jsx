@@ -17,10 +17,11 @@ import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext, useBlogContext } from "../contexts/BlogContext";
 
 const BlogCard = () => {
-  // const { currentUser } = useAuthContext();
+  
   const { blogList } = useFetch();
   let navigate = useNavigate();
   const { currentUser, handleFavIcon } = useContext(AuthContext);
+  console.log(currentUser)
 
   return (
     <div className="blogCardForm">

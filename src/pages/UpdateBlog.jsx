@@ -21,24 +21,22 @@ const UpdateBlog = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    // console.log(name, value);
-    /* burdaki name => inputa göre değişir. title, url veya content. */
     setInfo({ ...info, [name]: value, date: date + time });
   };
 
-  /* const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     EditUser(info, currentUser);
     setInfo({ ...info, title: "", imgUrl: "", content: "", date: "" });
     navigate("/");
-  }; */
+  };
 
   return (
     <div className="newblogContainer">
       <img src={blogLogo} alt="blog-logo" className="blogLogo" />
       <h1>── New Blog ──</h1>
 
-      <form action="" onSubmit={""}>
+      <form action="" onSubmit={handleSubmit}>
         <TextField
           required
           id="outlined-required"
@@ -71,7 +69,7 @@ const UpdateBlog = () => {
           value={info?.content}
           onChange={handleChange}
         />
-        <Button variant="contained" className="btn" type="submit">
+        <Button variant="contained" className="btn" onClick={handleSubmit} type="submit">
           EDIT
         </Button>
       </form>
