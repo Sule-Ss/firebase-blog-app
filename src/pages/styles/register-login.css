@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #c4e2eb;
+    background-color: #FDEFF4;
     min-height: 100vh;
     font-family: 'Girassol', cursive;
-    background-image: url(https://picsum.photos/800/800);
+    /* background-image: url(https://picsum.photos/800/800); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -16,15 +16,15 @@
     flex-direction: column;
     align-items: center;
     margin: 2rem;
-    box-shadow: 5px 10px 8px #888888;
-    color: #046582;
+    box-shadow: 5px 10px 8px #ecaea3;
+    color: #a13724;
     background-color: white;
     border-radius: 1rem;
 }
 
 .blogLogo{
     border-radius: 50%;
-    background-color: #046582;
+    background-color: #e96149;
     padding: 1rem;
     width: 12rem;
     height: 10rem;
@@ -55,17 +55,17 @@ form .googleButton img{
 }
 
 form .googleButton:hover{
-    background-color: gainsboro;
+    background-color: #f59786;
 }
 
 form .registerButton{
-    background-color: #046582;
+    background-color: #65251a;
     height: 2.5rem;
     font-size: 1rem;
 }
 
 form .registerButton:hover{
-    color: #046582;
-    background-color: #c4e2eb;
+    color: #65251a;
+    background-color: #ef6f59;
     font-weight: bold;
 }

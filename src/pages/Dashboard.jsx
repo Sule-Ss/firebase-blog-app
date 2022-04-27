@@ -2,11 +2,12 @@ import React from "react";
 import BlogCard from "../components/BlogCard";
 import "./styles/dasboard.css";
 import spinner from "../assests/spinner.gif"
+import Header from "../components/Header";
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1 className="dasboardH1">~~DashBoard~~</h1>
+    <div className="home">
+      <Header/>
       <BlogCard />
     </div>
   );

@@ -1,9 +1,29 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { userObserver } from "../utils/firebaseUtils";
+import { EditUser, userObserver } from "../utils/firebaseUtils";
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState();
+
+    const handleFavIcon = (e, data) => {
+      e.stopPropagation();
+      if (!currentUser) {
+        // toastWarnNotify("please login to like")
+      } else {
+          if (data.likedUserIds) {
+            if (data.likedUserIds.includes(currentUser.uid)) {
+              EditUser({ ...data, likedUserIds: data.likedUserIds.filter((item) => !(item === currentUser.uid)) })
+              data.likedUserIds.filter((item) => !(item === currentUser.uid))
+            } else {
+              data.likedUserIds.push(currentUser.uid)
+              EditUser({ ...data, likedUserIds: data.likedUserIds })
+            }
+          } else {
+            EditUser({ ...data, likedUserIds: currentUser.uid.split(" ") })
+          }
+      }
+    }
+    
 
     useEffect(() => {
     //usser signin signout olduğunda takip eden fonk.
@@ -11,7 +31,7 @@ const AuthContextProvider = ({children}) => {
     }, [])
     
   return (
-    <AuthContext.Provider value={{currentUser}}>
+    <AuthContext.Provider value={{currentUser, handleFavIcon}}>
       {children}
     </AuthContext.Provider>
   );

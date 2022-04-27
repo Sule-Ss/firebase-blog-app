@@ -12,11 +12,14 @@ import { useNavigate } from "react-router-dom";
 import { EditUser, useFetch } from "../utils/firebaseUtils";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import spinner from "../assests/spinner.gif"
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const BlogCard = () => {
   // const { currentUser } = useAuthContext();
   const { blogList } = useFetch();
   let navigate = useNavigate();
+  const { currentUser, handleFavIcon } = useContext(AuthContext);
 
   const handleFavClick = (item) => {
     // setFav(fav + 1);
@@ -60,7 +63,7 @@ const BlogCard = () => {
                     navigate(`/details/${item.id}`, { state: { item } })
                   }
                 >
-                  {item?.content.substring(0, 200) + " ..."}
+                  {item?.content.substring(0, 150) + " ..."}
                 </Typography>
                 <Typography color="darkblue" marginTop="1rem">
                   {item.user}
@@ -68,11 +71,11 @@ const BlogCard = () => {
               </CardContent>
               <CardActions sx={{ borderRadius: "50%" }}>
                 <FavoriteIcon
-                  className={item.likes > 0 ? "active" : "favBtn"}
+                  className={item?.likedUserIds?.includes(currentUser.uid) > 0 ? "active" : "favBtn"}
                   sx={{ cursor: "pointer", marginRight: "5px" }}
-                  onClick={() => handleFavClick(item)}
+                  onClick={(e) => handleFavIcon(e,item)}
                 />
-                <span style={{marginRight:"1rem"}}> {item.likes}</span>
+                <span style={{marginRight:"1rem"}}> {item.likedUserIds?.length}</span>
                 <ModeCommentOutlinedIcon
                   sx={{ cursor: "pointer"}}
                 />

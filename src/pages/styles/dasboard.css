@@ -1,5 +1,13 @@
+.home{
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
 .dasboardH1{
-    text-align: center;
-    margin: 2rem;
+    /* text-align: center; */
+    margin-right: 2rem;
     font-size: 3rem;
+    writing-mode: vertical-rl; 
+    background-color: gray;
+    mask-repeat: repeat-x;
 }

@@ -3,7 +3,8 @@
 .navbar {
     font-family: 'Girassol', cursive;
     /* background-color: #046582; */
-    background-color: #180A0A;
+    /* background-color: #952E05; */
+    background-color: #a10404;
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
@@ -12,6 +13,7 @@
     height: 4rem;
     position: sticky;
     top: 0px;
+    z-index: 1;
     /* letter-spacing: 0.1rem; */
 }
 
@@ -28,9 +30,10 @@
 }
 
 .navbar img {
-    height: 1.5rem;
+    height: 2rem;
     background-color: white;
     padding: 2px;
+    margin-top: 0.5rem;
     border-radius: 50%;
     cursor: pointer;
     transition: 0.3s;
@@ -51,27 +54,97 @@
     text-decoration: none;
 }
 
+/* ------ HEADER --------- */
+
+.bounce {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    background: #fefefe;
+    color: #973a04;
+    background-color: #f4dccf;
+    /* border: 1px solid #4a4a4a; */
+    margin-top: 1rem;
+    word-spacing: 20rem;
+}
+
+.bounce h1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    -moz-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    -moz-animation: bouncing-text 15s linear infinite alternate;
+    -webkit-animation: bouncing-text 15s linear infinite alternate;
+    animation: bouncing-text 25s linear infinite alternate;
+}
+
+@-moz-keyframes bouncing-text {
+    0% {
+        -moz-transform: translateX(50%);
+    }
+    100% {
+        -moz-transform: translateX(-50%);
+    }
+}
+
+@-webkit-keyframes bouncing-text {
+    0% {
+        -webkit-transform: translateX(50%);
+    }
+    100% {
+        -webkit-transform: translateX(-50%);
+    }
+}
+
+@keyframes bouncing-text {
+    0% {
+        -moz-transform: translateX(50%);
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    100% {
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+
 /*----- BLOG CARDS --------- */
 
+.blogCardForm{
+    margin: 0 3rem;
+}
+
 .blogCardForm .cardContainer{
-    background-color: #f4fdfc;
+    /* background-color: #FFEEEE; */
     box-shadow: 5px 10px 8px #888888;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+    gap: 5rem;
+    width: 20rem;
 }
 
 .cardContainer .cardImage {
     object-fit: fill;
     object-position: center;
+    /* filter: drop-shadow(8px 8px 10px gray); */
+    /* filter: grayscale(50%); */
+    filter:invert(100%) drop-shadow(8px 8px 10px gray);
 }
 
 .cardContainer .favBtn{
-    color: black;
-    transition: 1s;
+    color: gray;
+    transition: 0.5s;
     border-radius: 50%;
 }
 
 .cardContainer .active{
-    color: red;
+    color: #930c0c;
+    transition: 0.5s;
 }
 
 .blogCardForm{

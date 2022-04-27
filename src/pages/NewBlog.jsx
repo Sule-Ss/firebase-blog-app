@@ -10,9 +10,9 @@ import { useAuthContext } from "../contexts/AuthContext";
 const NewBlog = () => {
   const { info, setInfo } = useBlogContext();
   let navigate = useNavigate();
-  const {currentUser} = useAuthContext();
+  const { currentUser } = useAuthContext();
 
-  console.log(currentUser)
+  console.log(currentUser);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -24,10 +24,9 @@ const NewBlog = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // (info.id)
     AddBlog(info, currentUser);
-   
+    //yeni blog eklendikten sonra inputları boşaltmak için
+    setInfo({ ...info, title: "", imgUrl: "", content: "" });
     navigate("/");
   };
 
@@ -36,7 +35,7 @@ const NewBlog = () => {
       <img src={blogLogo} alt="blog-logo" className="blogLogo" />
       <h1>── New Blog ──</h1>
 
-      <form action="" onSubmit={handleSubmit} >
+      <form action="" onSubmit={handleSubmit}>
         <TextField
           required
           id="outlined-required"
