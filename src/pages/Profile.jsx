@@ -15,13 +15,13 @@ const Profile = () => {
   return (
     <div className="profilContainer">
       <div>
-        {/* {
-          currentUser?.photoURL ? <img src={currentUser?.photoURL} alt="" /> : <AccountCircleRoundedIcon className="profileIcon" />
+       {/*  {
+          currentUser?.photoURL ? <img src={currentUser?.providerData[0].photoURL} alt="" /> : <AccountCircleRoundedIcon className="profileIcon" />
         } */}
-        {/* <img src={currentUser?.photoURL} alt="" /> */}
+        {/* <img src={currentUser?.providerData[0].photoURL} alt="" /> */}
         <AccountCircleRoundedIcon className="profileIcon" />
-        <p>{currentUser?.displayName}</p>
-        <p>{currentUser?.email}</p>
+        <p>User Name : {currentUser?.displayName}</p>
+        <p>User Email: {currentUser?.email}</p>
       </div>
     </div>
   );

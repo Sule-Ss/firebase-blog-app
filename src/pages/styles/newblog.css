@@ -20,12 +20,12 @@
 }
 
 .newblogContainer .btn{
-    background-color: #046582;
+    background-color: #65251a;
     font-size: 1.2rem;
 }
 
 .newblogContainer .btn:hover{
-    background-color: rgb(193, 185, 185);
-    color: #046582;
+    background-color: #ef6f59;
+    color: #65251a;
     
 }

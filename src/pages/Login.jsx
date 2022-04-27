@@ -4,9 +4,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./styles/register-login.css";
 import googleLogo from "../assests/google.png";
-import { signIn, signUpProvider } from "../utils/firebaseUtils";
+import { forgotPassword, signIn, signUpProvider } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
-import { fontStyle } from "@mui/system";
 import passwordImg from "../assests/forgot-password.png"
 
 const Login = () => {
@@ -67,7 +66,7 @@ const Login = () => {
             <Button onClick={() => navigate("/register")}>Register</Button>
           </p>
           <p>
-            Do you forgot the password? <Button><img src={passwordImg} alt="" /></Button>
+            Do you forgot the password? <Button onClick={()=> forgotPassword(email)}><img src={passwordImg} alt="" /></Button>
           </p>
         </div>
       </div>
