@@ -23,7 +23,9 @@
     margin: 1rem 2rem
 }
 
-.cardContainer .editButton {
+/* delete button */
+
+.cardContainer .deleteButton {
     background-image: linear-gradient(to right, #C04848 0%, #480048 51%, #C04848 100%);
 
     padding: 0.3rem 1rem;
@@ -38,29 +40,42 @@
 
 }
 
-.cardContainer .editButton:hover {
+.cardContainer .deleteButton:hover {
     background-position: right center;
-    /* change the direction of the change here */
+
     color: #fff;
     text-decoration: none;
 }
 
-.cardContainer .updateButton {
-    background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%);
-   /* margin: 10px; */
-   padding: 0.3rem 1rem;
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;            
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
+/* update button */
+ .cardContainer .updateButton {
+    background-image: linear-gradient(to right, #f85032 0%, #e73827  51%, #f85032  100%);
+    padding: 0.3rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
 
- .cardContainer .updateButton:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }
+  .cardContainer .updateButton:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+/* fav icon */
+
+.detailsContainer .favBtn{
+    color: gray;
+    transition: 0.5s;
+    border-radius: 50%;
+}
+
+.detailsContainer .active{
+    color: #930c0c;
+    transition: 0.5s;
+}

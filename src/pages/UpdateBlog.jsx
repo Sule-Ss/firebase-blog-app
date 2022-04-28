@@ -8,28 +8,27 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 
 const UpdateBlog = () => {
-  const { info, setInfo } = useBlogContext();
-  const { currentUser } = useAuthContext();
+  const { info, setInfo, date, time } = useBlogContext();
+  const { currentUser,setCurrentUser } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
   const data = location.state.data
 
   console.log(currentUser);
 
-  const date = new Date().toLocaleDateString() + "  ";
-  const time = new Date().toLocaleTimeString().slice(0, 5);
-  console.log(date, time);
+  console.log(info)
 
   const handleChange = (e) => {
     e.preventDefault();
-    const { name, value } = e.target;
-    setInfo({ ...info, [name]: value, date: date + time });
+    const { name, defaultValue, value } = e.target;
+    setInfo({ ...info, [name]: (value ? value : defaultValue), date: date + time, id:data.id, user:data.user });
+    setCurrentUser({...currentUser})
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    EditUser(info, currentUser, );
-    setInfo({ ...info, title: "", imgUrl: "", content: "", date: "" });
+    EditUser(info);
+    // setInfo({ ...info, title: "", imgUrl: "", content: "", date: "" });
     navigate("/");
   };
 
@@ -43,19 +42,19 @@ const UpdateBlog = () => {
           required
           id="outlined-required"
           label="Title"
-          defaultValue=""
+          defaultValue={data?.title}
           name="title"
-          value={data?.title}
-          onChange={handleChange}
+          // value={data.title}
+          onChange={(e)=>handleChange(e)}
         />
 
         <TextField
           required
           id="outlined-required"
           label="Image URL"
-          defaultValue=""
+          defaultValue={data?.imgUrl}
           name="imgUrl"
-          value={data?.imgUrl}
+          // value=""
           type="url"
           onChange={handleChange}
         />
@@ -65,10 +64,10 @@ const UpdateBlog = () => {
           label="Content"
           multiline
           rows={10}
-          defaultValue=""
+          defaultValue={data?.content}
           required
           name="content"
-          value={data?.content}
+          // value=""
           onChange={handleChange}
         />
         <Button

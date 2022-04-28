@@ -149,8 +149,7 @@ export const useFetch = () => {
 //Bilgi silme
 export const DeleteBlog = (id) => {
   const db = getDatabase();
-  // const blogRef = ref(db, "blogs");
-  remove(ref(db, "baglanti/" + id));
+  remove(ref(db, "/blogs/" + id));
 
   // Toastify("");
 };
@@ -160,6 +159,6 @@ export const EditUser = (info) => {
   const db = getDatabase();
   const updates = {};
 
-  updates["blogs/" + info.id] = info;
+  updates["/blogs/" + info.id] = info;
   return update(ref(db), updates);
 };

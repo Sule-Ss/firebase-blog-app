@@ -20,6 +20,7 @@ const NewBlog = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    // const privateId  = currentUser.reloadUserInfo.localId; 
     /* burdaki name => inputa göre değişir. title, url veya content. */
     setInfo({ ...info, [name]: value, date:date+time });
   };

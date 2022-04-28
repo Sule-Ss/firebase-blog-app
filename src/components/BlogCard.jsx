@@ -79,7 +79,7 @@ const BlogCard = () => {
                 {item.likedUserIds?.length}
               </span>
               <ModeCommentOutlinedIcon sx={{ cursor: "pointer" }} />
-              <span> {item.likes}</span>
+              <span>0</span>
 
               <Typography className="email">{item.user}</Typography>
             </CardActions>
