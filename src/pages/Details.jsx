@@ -19,14 +19,16 @@ const Details = () => {
   const navigate = useNavigate();
 
   const data = location.state.item;
+  
 
-  const { currentUser } = useAuthContext();
+  const { currentUser, handleFavIcon } = useAuthContext();
   const { setInfo } = useBlogContext();
 
   const editHandler = ({ id, username, phoneNumber, gender }) => {
     setInfo({ id, username, phoneNumber, gender });
     navigate(`/updateBlog/${id}`);
   };
+
 
   /*  const editHandleChange = ()=>{
 
@@ -50,24 +52,30 @@ const Details = () => {
             variant="h5"
             component="div"
             textAlign="center"
+            color="#e84224"
           >
             {data?.title}
           </Typography>
 
-          <Typography value={data.date}>{data.date}</Typography>
-
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body3" value={data.date}>{data.date}</Typography>
+          
+          <Typography variant="body1" color="black" marginTop="1rem">
             {data?.content}
           </Typography>
-          <Typography color="darkblue" marginTop="1rem">
+          <Typography variant="body2"  marginTop="1rem">
             {data.user}
           </Typography>
         </CardContent>
         <CardActions sx={{ borderRadius: "50%" }}>
-          <FavoriteIcon
-            className={data.likes > 0 ? "active" : "favBtn"}
-            sx={{ cursor: "pointer", marginRight: "5px" }}
-          />
+        <FavoriteIcon
+                className={
+                  data?.likedUserIds?.includes(currentUser.uid) > 0
+                    ? "active"
+                    : "favBtn"
+                }
+                sx={{ cursor: "pointer", marginRight: "5px" }}
+                onClick={(e) => handleFavIcon(e, data)}
+              />
           <span> {data.likes}</span>
 
           <ModeCommentOutlinedIcon sx={{ cursor: "pointer" }} />
@@ -78,13 +86,13 @@ const Details = () => {
           <div className="buttons">
             <Button className="editButton">DELETE</Button>
             <Button className="updateButton"
-              onClick={() => editHandler(data.title, data.imgUrl, data.content)}
+              onClick={() => navigate("/updateBlog", { state: { data } })}
             >
               UPDATE
             </Button>
           </div>
         ) : (
-          <Typography className="blogWarning">Only the author of this blog can make changes...</Typography>
+          <div className="blogWarning">Only the author of this blog can make changes...</div>
         )}
       </Card>
     </div>

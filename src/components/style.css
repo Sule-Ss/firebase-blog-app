@@ -2,7 +2,8 @@
 
 .navbar {
     font-family: 'Girassol', cursive;
-    background-color: #a10404;
+    /* background-color: #a10404; */
+    background-color: #F3705A;
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
@@ -23,7 +24,7 @@
 }
 
 .navbar h1 span {
-    color: #F5DEB3;
+    color: #fcd6bd;
 }
 
 .navbar img {
@@ -58,7 +59,7 @@
     overflow: hidden;
     position: relative;
     background: #fefefe;
-    color: #973a04;
+    color: #e84224;
     background-color: #f4dccf;
     /* border: 1px solid #4a4a4a; */
     margin-top: 1rem;
@@ -119,7 +120,7 @@
 
 .blogCardForm .cardContainer{
     /* background-color: #FFEEEE; */
-    box-shadow: 5px 10px 8px #888888;
+    box-shadow: 5px 10px 8px #f6b3a7;
     margin: 2rem 0;
     gap: 5rem;
     width: 20rem;
@@ -129,7 +130,7 @@
     object-fit: fill;
     object-position: center;
     /* cardlardaki img lere verilen efect :   */
-    filter:invert(100%) drop-shadow(8px 8px 10px gray);
+    filter: drop-shadow(8px 8px 10px gray);
 }
 
 .cardContainer .favBtn{
@@ -162,3 +163,8 @@ display: flex;
     margin-left: auto;
 }
 
+/* ------ SIDE BAR -------- */
+
+.sideBar{
+    color: red;
+}

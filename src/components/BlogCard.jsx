@@ -83,11 +83,6 @@ const BlogCard = () => {
 
               <Typography className="email">{item.user}</Typography>
             </CardActions>
-            {/* <Button
-                  onClick={currentUser ? navigate("/details") : "user not found"}
-                >
-                  Details
-                </Button> */}
           </Card>
         ))
       ) : (

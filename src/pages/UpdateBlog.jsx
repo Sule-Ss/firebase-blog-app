@@ -4,13 +4,15 @@ import Button from "@mui/material/Button";
 import "./styles/newblog.css";
 import { useBlogContext } from "../contexts/BlogContext";
 import { EditUser } from "../utils/firebaseUtils";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 
 const UpdateBlog = () => {
   const { info, setInfo } = useBlogContext();
-  let navigate = useNavigate();
   const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const data = location.state.data
 
   console.log(currentUser);
 
@@ -26,7 +28,7 @@ const UpdateBlog = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    EditUser(info, currentUser);
+    EditUser(info, currentUser, );
     setInfo({ ...info, title: "", imgUrl: "", content: "", date: "" });
     navigate("/");
   };
@@ -43,7 +45,7 @@ const UpdateBlog = () => {
           label="Title"
           defaultValue=""
           name="title"
-          value={info?.title}
+          value={data?.title}
           onChange={handleChange}
         />
 
@@ -53,7 +55,7 @@ const UpdateBlog = () => {
           label="Image URL"
           defaultValue=""
           name="imgUrl"
-          value={info?.imgUrl}
+          value={data?.imgUrl}
           type="url"
           onChange={handleChange}
         />
@@ -66,7 +68,7 @@ const UpdateBlog = () => {
           defaultValue=""
           required
           name="content"
-          value={info?.content}
+          value={data?.content}
           onChange={handleChange}
         />
         <Button
