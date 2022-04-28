@@ -76,15 +76,15 @@ const Details = () => {
 
         {currentUser.email === data?.user ? (
           <div className="buttons">
-            <Button>DELETE</Button>
-            <Button
+            <Button className="editButton">DELETE</Button>
+            <Button className="updateButton"
               onClick={() => editHandler(data.title, data.imgUrl, data.content)}
             >
               UPDATE
             </Button>
           </div>
         ) : (
-          <p className="blogWarning">Only the author of this blog can make changes...</p>
+          <Typography className="blogWarning">Only the author of this blog can make changes...</Typography>
         )}
       </Card>
     </div>

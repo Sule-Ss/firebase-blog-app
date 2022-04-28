@@ -1,8 +1,66 @@
-.detailsContainer{
-display: flex;
+.detailsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.detailsContainer .blogWarning{
-    color: gray;
-    font-size: 13px;
+.detailsContainer .cardContainer {
+    display: flex;
+    flex-direction: column;
 }
+
+.cardContainer .blogWarning {
+    color: gray;
+    font-size: 1px;
+}
+
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 2rem
+}
+
+
+.cardContainer .editButton {
+    background-image: linear-gradient(to right, #C04848 0%, #480048 51%, #C04848 100%);
+
+    padding: 0.3rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+
+.cardContainer .editButton:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.cardContainer .updateButton {background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)}
+.cardContainer .updateButton {
+   /* margin: 10px; */
+   padding: 0.3rem 1rem;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .cardContainer .updateButton:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
