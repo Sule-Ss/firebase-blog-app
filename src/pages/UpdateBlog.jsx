@@ -6,7 +6,6 @@ import { useBlogContext } from "../contexts/BlogContext";
 import { EditUser } from "../utils/firebaseUtils";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
-import { useEffect } from "react";
 
 const UpdateBlog = () => {
   const { info, setInfo, date, time } = useBlogContext();
@@ -15,15 +14,18 @@ const UpdateBlog = () => {
   const location = useLocation();
   const data = location.state.data
 
-  console.log(currentUser);
+  const newValue = { title: data.title,
+    imgUrl: data.imgUrl,
+    content: data.content,
+    date: data.date,
+    likes: 0,
+    user: currentUser.email,}
 
-  console.log(info)
 
   const handleChange = (e) => {
     e.preventDefault();
     const { name, defaultValue, value } = e.target;
-    setInfo({ ...info, [name]: (value ? value : defaultValue), date: date + time, id:data.id, user:data.user });
-    // setCurrentUser({...currentUser})
+    setInfo({ ...newValue, [name]: (value ? value : defaultValue), date: date + time, id:data.id, user:data.user });
   };
 
   const handleSubmit = (e) => {
@@ -34,12 +36,7 @@ const UpdateBlog = () => {
     navigate(`/`);
   };
 
-  useEffect(() => {
-    //defaultvalue ları value değerine atamak için : 
-  setInfo({...info, title: data?.title, imgUrl: data?.imgUrl, content: data?.content})
-  }, [])
   
-
   return (
     <div className="newblogContainer">
       <img src={blogLogo} alt="blog-logo" className="blogLogo" />
