@@ -7,8 +7,11 @@ const initialValues = { title: "", imgUrl: "", content: "", date: "" };
 const BlogContextProvider = ({ children }) => {
   const [info, setInfo] = useState(initialValues);
 
+  const date = new Date().toLocaleDateString() + "  " 
+  const time = new Date().toLocaleTimeString().slice(0,5)
+
   return (
-    <BlogContext.Provider value={{ info, setInfo }}>
+    <BlogContext.Provider value={{ info,date, time, setInfo }}>
       {children}
     </BlogContext.Provider>
   );

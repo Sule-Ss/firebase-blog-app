@@ -8,14 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 
 const NewBlog = () => {
-  const { info, setInfo } = useBlogContext();
+  const { info,date,time, setInfo } = useBlogContext();
   let navigate = useNavigate();
   const { currentUser } = useAuthContext();
 
   console.log(currentUser);
 
-  const date = new Date().toLocaleDateString() + "  " 
-  const time = new Date().toLocaleTimeString().slice(0,5)
+  
   console.log(date, time)
 
   const handleChange = (e) => {

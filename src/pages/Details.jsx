@@ -82,7 +82,7 @@ const Details = () => {
           <span> {data.likes}</span>
         </CardActions>
 
-        {currentUser.email === data?.user ? (
+        {currentUser?.email === data?.user ? (
           <div className="buttons">
             <Button className="editButton">DELETE</Button>
             <Button className="updateButton"

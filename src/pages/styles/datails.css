@@ -13,17 +13,15 @@
 
 .cardContainer .blogWarning {
     color: gray;
-    font-size: 1px;
+    font-size: 15px;
+    margin-top: 1rem;
 }
-
-
 
 .buttons{
     display: flex;
     justify-content: space-between;
     margin: 1rem 2rem
 }
-
 
 .cardContainer .editButton {
     background-image: linear-gradient(to right, #C04848 0%, #480048 51%, #C04848 100%);
@@ -47,10 +45,8 @@
     text-decoration: none;
 }
 
-
-
-.cardContainer .updateButton {background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)}
 .cardContainer .updateButton {
+    background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%);
    /* margin: 10px; */
    padding: 0.3rem 1rem;
    text-align: center;
