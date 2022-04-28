@@ -6,10 +6,11 @@ import { useBlogContext } from "../contexts/BlogContext";
 import { EditUser } from "../utils/firebaseUtils";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
+import { useEffect } from "react";
 
 const UpdateBlog = () => {
   const { info, setInfo, date, time } = useBlogContext();
-  const { currentUser,setCurrentUser } = useAuthContext();
+  const { currentUser } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
   const data = location.state.data
@@ -22,15 +23,22 @@ const UpdateBlog = () => {
     e.preventDefault();
     const { name, defaultValue, value } = e.target;
     setInfo({ ...info, [name]: (value ? value : defaultValue), date: date + time, id:data.id, user:data.user });
-    setCurrentUser({...currentUser})
+    // setCurrentUser({...currentUser})
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     EditUser(info);
-    // setInfo({ ...info, title: "", imgUrl: "", content: "", date: "" });
-    navigate("/");
+    // editten sonra new blog value larını temizlemek için : 
+    setInfo({ ...info, title: "", imgUrl: "", content: "", date: "" });
+    navigate(`/`);
   };
+
+  useEffect(() => {
+    //defaultvalue ları value değerine atamak için : 
+  setInfo({...info, title: data?.title, imgUrl: data?.imgUrl, content: data?.content})
+  }, [])
+  
 
   return (
     <div className="newblogContainer">
@@ -44,7 +52,6 @@ const UpdateBlog = () => {
           label="Title"
           defaultValue={data?.title}
           name="title"
-          // value={data.title}
           onChange={(e)=>handleChange(e)}
         />
 
@@ -54,7 +61,6 @@ const UpdateBlog = () => {
           label="Image URL"
           defaultValue={data?.imgUrl}
           name="imgUrl"
-          // value=""
           type="url"
           onChange={handleChange}
         />
@@ -67,7 +73,6 @@ const UpdateBlog = () => {
           defaultValue={data?.content}
           required
           name="content"
-          // value=""
           onChange={handleChange}
         />
         <Button

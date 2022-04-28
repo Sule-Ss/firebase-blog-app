@@ -1,5 +1,4 @@
 import {
-  // Button,
   Card,
   CardActions,
   CardContent,
@@ -8,7 +7,6 @@ import {
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-// import { useAuthContext } from "../contexts/AuthContext";
 import { useFetch } from "../utils/firebaseUtils";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import spinner from "../assests/spinner.gif";
@@ -20,6 +18,8 @@ const BlogCard = () => {
   let navigate = useNavigate();
   const { currentUser, handleFavIcon } = useContext(AuthContext);
   // console.log(currentUser)
+
+ 
 
   return (
     <div className="blogCardForm">
