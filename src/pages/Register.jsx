@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./styles/register-login.css";
 import googleLogo from "../assests/google.png";
-import { createUser } from "../utils/firebaseUtils";
+import { createUser, signUpProvider } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -18,6 +18,10 @@ const Register = () => {
     e.preventDefault();
     createUser(email, password, displayName, navigate);
     //  console.log(fullName)
+  };
+
+  const handleProviderRegister = () => {
+    signUpProvider(navigate);
   };
 
   const style = {
@@ -71,7 +75,7 @@ const Register = () => {
           <Button variant="contained" type="submit" className="registerButton">
             Register
           </Button>
-          <Button variant="contained" className="googleButton">
+          <Button variant="contained" className="googleButton" onClick={handleProviderRegister}>
             WITH <img src={googleLogo} alt="google-logo" />
           </Button>
         </form>
