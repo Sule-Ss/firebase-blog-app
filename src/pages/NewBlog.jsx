@@ -12,11 +12,6 @@ const NewBlog = () => {
   let navigate = useNavigate();
   const { currentUser } = useAuthContext();
 
-  console.log(currentUser);
-
-  
-  console.log(date, time)
-
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -33,6 +28,18 @@ const NewBlog = () => {
     navigate("/");
   };
 
+  const style = {
+    "& label.Mui-focused": {
+      color: "#e84224",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#ef6f59",
+      },
+    },
+  };
+
+
   return (
     <div className="newblogContainer">
       <img src={blogLogo} alt="blog-logo" className="blogLogo" />
@@ -40,10 +47,10 @@ const NewBlog = () => {
 
       <form action="" onSubmit={handleSubmit}>
         <TextField
+        sx={style}
           required
           id="outlined-required"
           label="Title"
-          defaultValue=""
           name="title"
           value={info?.title}
           onChange={handleChange}
@@ -51,10 +58,10 @@ const NewBlog = () => {
 
 
         <TextField
+        sx={style}
           required
           id="outlined-required"
           label="Image URL"
-          defaultValue=""
           name="imgUrl"
           value={info?.imgUrl}
           type="url"
@@ -62,11 +69,11 @@ const NewBlog = () => {
         />
 
         <TextField
+        sx={style}
           id="outlined-multiline-static"
           label="Content"
           multiline
           rows={10}
-          defaultValue=""
           required
           name="content"
           value={info?.content}

@@ -36,6 +36,17 @@ const UpdateBlog = () => {
     navigate(`/`);
   };
 
+  const style = {
+    "& label.Mui-focused": {
+      color: "#e84224",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#ef6f59",
+      },
+    },
+  };
+
   
   return (
     <div className="newblogContainer">
@@ -44,6 +55,7 @@ const UpdateBlog = () => {
 
       <form action="" onSubmit={handleSubmit}>
         <TextField
+        sx={style}
           required
           id="outlined-required"
           label="Title"
@@ -53,6 +65,7 @@ const UpdateBlog = () => {
         />
 
         <TextField
+        sx={style}
           required
           id="outlined-required"
           label="Image URL"
@@ -63,6 +76,7 @@ const UpdateBlog = () => {
         />
 
         <TextField
+        sx={style}
           id="outlined-multiline-static"
           label="Content"
           multiline

@@ -25,11 +25,11 @@ const BlogCard = () => {
     <div className="blogCardForm">
       {blogList ? (
         blogList?.map((item, index) => (
-          <Card sx={{ maxWidth: 345 }} className="cardContainer" key={index}>
+          <Card sx={{ maxWidth: 320 }} className="cardContainer" key={index} loading="lazy">
             <CardMedia
               className="cardImage"
               component="img"
-              height="140"
+              height="170"
               image={item?.imgUrl}
               alt="blog image"
               onClick={() =>
@@ -54,6 +54,7 @@ const BlogCard = () => {
                 {item?.date}
               </Typography>
               <Typography
+              height={90}
                 variant="body2"
                 color="text.secondary"
                 sx={{ cursor: "pointer", "&:hover": { color: "black" } }}

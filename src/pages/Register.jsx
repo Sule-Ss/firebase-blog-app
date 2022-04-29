@@ -20,6 +20,17 @@ const Register = () => {
     //  console.log(fullName)
   };
 
+  const style = {
+    "& label.Mui-focused": {
+      color: "#e84224",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#ef6f59",
+      },
+    },
+  };
+
   return (
     <div className="registerMain">
       <div className="registerContainer">
@@ -28,6 +39,7 @@ const Register = () => {
 
         <form action="" onSubmit={handleSubmit}>
           <TextField
+            sx={style}
             name="fullName"
             required
             id="outlined-required"
@@ -37,6 +49,7 @@ const Register = () => {
           />
 
           <TextField
+            sx={style}
             name="email"
             required
             id="outlined-required"
@@ -45,6 +58,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
+            sx={style}
             name="password"
             required
             id="outlined-password-input"

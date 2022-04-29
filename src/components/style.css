@@ -2,7 +2,6 @@
 
 .navbar {
     font-family: 'Girassol', cursive;
-    /* background-color: #a10404; */
     background-color: #F3705A;
     color: whitesmoke;
     display: flex;
@@ -61,7 +60,6 @@
     background: #fefefe;
     color: #e84224;
     background-color: #f4dccf;
-    /* border: 1px solid #4a4a4a; */
     margin-top: 1rem;
     word-spacing: 20rem;
 }
@@ -114,15 +112,24 @@
 
 /*----- BLOG CARDS --------- */
 
+.spinner img{
+    border-radius: 50%;
+    /* width: 50rem; */
+}
+
 .blogCardForm{
     margin: 0 3rem;
 }
 
+.blogCardForm{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 .blogCardForm .cardContainer{
-    /* background-color: #FFEEEE; */
     box-shadow: 5px 10px 8px #f6b3a7;
-    margin: 2rem 0;
-    gap: 5rem;
+    margin: 2rem 1rem;
     width: 20rem;
 }
 
@@ -146,12 +153,7 @@
     transition: 0.5s;
 }
 
-.blogCardForm{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    /* align-items: center; */
-}
+
 
 .cardBottom{
 display: flex;
@@ -163,10 +165,4 @@ display: flex;
     /* mail i sağ alt köşeye yapıştırmak için */
     margin-top: auto;
     margin-left: auto;
-}
-
-/* ------ SIDE BAR -------- */
-
-.sideBar{
-    color: red;
 }

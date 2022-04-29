@@ -6,7 +6,7 @@
 }
 
 .newblogContainer h1{
-    color: #046582;
+    color: #65251a;
 }
 
 .newblogContainer form {
@@ -26,6 +26,5 @@
 
 .newblogContainer .btn:hover{
     background-color: #ef6f59;
-    color: #65251a;
     
 }

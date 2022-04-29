@@ -6,7 +6,7 @@ import "./styles/register-login.css";
 import googleLogo from "../assests/google.png";
 import { forgotPassword, signIn, signUpProvider } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
-import passwordImg from "../assests/forgot-password.png"
+import passwordImg from "../assests/forgot-password.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,6 +24,17 @@ const Login = () => {
     signUpProvider(navigate);
   };
 
+  const style = {
+    "& label.Mui-focused": {
+      color: "#e84224",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#ef6f59",
+      },
+    },
+  };
+
   return (
     <div className="registerMain">
       <div className="registerContainer">
@@ -32,6 +43,8 @@ const Login = () => {
 
         <form action="" onSubmit={handleSubmit}>
           <TextField
+            sx={style}
+            className="input"
             required
             id="outlined-required"
             label="Email"
@@ -40,6 +53,7 @@ const Login = () => {
             type="email"
           />
           <TextField
+            sx={style}
             required
             id="outlined-password-input"
             label="Password"
@@ -61,12 +75,15 @@ const Login = () => {
         </form>
 
         <div style={{ fontFamily: "sans-serif", fontSize: "12px" }}>
-          <p >
+          <p>
             Are you not registered?{" "}
             <Button onClick={() => navigate("/register")}>Register</Button>
           </p>
           <p>
-            Do you forgot the password? <Button onClick={()=> forgotPassword(email)}><img src={passwordImg} alt="" /></Button>
+            Do you forgot the password?{" "}
+            <Button onClick={() => forgotPassword(email)}>
+              <img src={passwordImg} alt="" />
+            </Button>
           </p>
         </div>
       </div>

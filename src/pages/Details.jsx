@@ -15,12 +15,8 @@ import { DeleteBlog } from "../utils/firebaseUtils";
 
 const Details = () => {
   const location = useLocation();
-
   const navigate = useNavigate();
-
   const data = location.state.item;
-
-  console.log(data.id);
 
   const { currentUser, handleFavIcon } = useAuthContext();
 
