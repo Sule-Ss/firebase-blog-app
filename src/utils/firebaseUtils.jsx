@@ -21,6 +21,7 @@ import {
   remove,
   update,
 } from "firebase/database";
+import {Toastify, ToastifyInfo} from "./toastNotify";
 
 const firebaseApp = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -60,8 +61,7 @@ export const signIn = async (email, password, navigate) => {
 
 export const logOut = () => {
   signOut(auth);
-  alert("logged out successfully");
-  //toast ekle
+  ToastifyInfo("logged out successfully")
 };
 
 export const userObserver = (setCurrentUser) => {
@@ -151,7 +151,7 @@ export const DeleteBlog = (id) => {
   const db = getDatabase();
   remove(ref(db, "/blogs/" + id));
 
-  // Toastify("");
+  Toastify("deletion succeeded");
 };
 
 //Bilgi Değiştirme

@@ -7,6 +7,7 @@ import googleLogo from "../assests/google.png";
 import { forgotPassword, signIn, signUpProvider } from "../utils/firebaseUtils";
 import { useNavigate } from "react-router-dom";
 import passwordImg from "../assests/forgot-password.png";
+import { ToastifyInfo } from "../utils/toastNotify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Login = () => {
     e.preventDefault();
     signIn(email, password, navigate);
     // console.log(email, password);
+    ToastifyInfo("login successfully")
   };
 
   const handleProviderLogin = () => {
